@@ -3,12 +3,16 @@ using System.Collections.Generic;
 
 public class clickToObject : MonoBehaviour {
 
-	public List<KeyCode> upButton;
-	public List<KeyCode> downButton;
-	public List<KeyCode> leftButton;
-	public List<KeyCode> rightButton;
-	public List<KeyCode> backButton;
-	public List<KeyCode> forwardButton;
+	public List<KeyCode> upButton = new List<KeyCode> { KeyCode.UpArrow };
+	public List<KeyCode> downButton = new List<KeyCode> { KeyCode.DownArrow };
+	public List<KeyCode> leftButton = new List<KeyCode> { KeyCode.W };
+	public List<KeyCode> rightButton = new List<KeyCode> { KeyCode.S };
+	public List<KeyCode> backButton = new List<KeyCode> { KeyCode.A };
+	public List<KeyCode> forwardButton = new List<KeyCode> { KeyCode.D };
+	public List<KeyCode> restartButton;
+	public List<KeyCode> rotate1Button;
+	public List<KeyCode> rotate2Button;
+	public List<KeyCode> rotate3Button;
 
 	public float playerSpeed = 2.0f;
 	private float currentSpeed = 0.0f;
@@ -24,12 +28,12 @@ public class clickToObject : MonoBehaviour {
 		// Необходимое движение
 		Vector3 movement = new Vector3();
 		// Проверка нажатых клавиш
-		movement += MoveIfPressed(upButton, Vector3.up);
-		movement += MoveIfPressed(downButton, Vector3.down);
-		movement += MoveIfPressed(leftButton, Vector3.left);
-		movement += MoveIfPressed(rightButton, Vector3.right);
-		movement += MoveIfPressed(backButton, Vector3.back);
-		movement += MoveIfPressed(forwardButton, Vector3.forward);
+		movement = movement + MoveIfPressed(upButton, Vector3.up);
+		movement = movement + MoveIfPressed(downButton, Vector3.down);
+		movement = movement + MoveIfPressed(leftButton, Vector3.left);
+		movement = movement + MoveIfPressed(rightButton, Vector3.right);
+		movement = movement + MoveIfPressed(backButton, Vector3.back);
+		movement = movement + MoveIfPressed(forwardButton, Vector3.forward);
 		// Если нажато несколько кнопок, обрабатываем это
 		movement.Normalize();
 		// Проверка нажатия кнопки
@@ -43,7 +47,7 @@ public class clickToObject : MonoBehaviour {
 		else
 		{
 			// Если ничего не нажато
-//			this.transform.Translate(lastMovement * Time.deltaTime * currentSpeed, Space.World);
+			this.transform.Translate(lastMovement * Time.deltaTime * currentSpeed, Space.World);
 			// Замедление со временем
 			currentSpeed *= 0.19f;
 		}
@@ -57,6 +61,7 @@ public class clickToObject : MonoBehaviour {
 			if(Input.GetKey (element))
 			{
 				// Если нажато, покидаем функцию
+				Debug.Log(element);
 				return Movement;
 			}
 		}
