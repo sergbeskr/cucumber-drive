@@ -24,6 +24,19 @@ public class sergbeskrFPS : MonoBehaviour {
 	void Update () {
 		Movement();
 //		RotateYouOnMyDick(rotate1Button);
+
+		if(Input.GetAxis("Mouse X")<0){
+			print("left");
+		}
+		if(Input.GetAxis("Mouse X")>0){
+			print("right");
+		}
+		if(Input.GetAxis("Mouse Y")<0){
+			print("down");
+		}
+		if(Input.GetAxis("Mouse Y")>0){
+			print("up");
+		}
 	}
 
 	/*void RotateYouOnMyDick(List<KeyCode> keyList){
