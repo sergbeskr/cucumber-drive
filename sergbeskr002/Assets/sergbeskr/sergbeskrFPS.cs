@@ -21,7 +21,19 @@ public class sergbeskrFPS : MonoBehaviour {
 	private float currentSpeed = 0.0f;
 	private Vector3 lastMovement = new Vector3();
 
-	void Update () {
+	void Start(){
+		print("position");
+		print("x   "+transform.position.x);
+		print("y   "+transform.position.y);
+		print("z   "+transform.position.z);
+		print("rotation");
+		print("w   "+transform.rotation.w);
+		print("x   "+transform.rotation.x);
+		print("y   "+transform.rotation.y);
+		print("z   "+transform.rotation.z);
+	}
+
+	void Update(){
 		Movement();
 //		RotateYouOnMyDick(rotate1Button);
 
