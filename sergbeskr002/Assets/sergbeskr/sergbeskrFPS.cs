@@ -6,10 +6,10 @@ public class sergbeskrFPS : MonoBehaviour {
 //	public List<KeyCode> upButton = new List<KeyCode> { KeyCode.UpArrow };
 //	public List<KeyCode> downButton = new List<KeyCode> { KeyCode.DownArrow };
 
-	public List<KeyCode> leftButton = new List<KeyCode> { KeyCode.W };
-	public List<KeyCode> rightButton = new List<KeyCode> { KeyCode.S };
-	public List<KeyCode> backButton = new List<KeyCode> { KeyCode.A };
-	public List<KeyCode> forwardButton = new List<KeyCode> { KeyCode.D };
+	public List<KeyCode> leftButton = new List<KeyCode> { KeyCode.A };
+	public List<KeyCode> rightButton = new List<KeyCode> { KeyCode.D };
+	public List<KeyCode> backButton = new List<KeyCode> { KeyCode.S };
+	public List<KeyCode> forwardButton = new List<KeyCode> { KeyCode.W };
 
 //	public List<KeyCode> restartButton = new List<KeyCode> { KeyCode.Space };
 
@@ -20,6 +20,7 @@ public class sergbeskrFPS : MonoBehaviour {
 	public float playerSpeed = 5.0f;
 	private float currentSpeed = 0.0f;
 	private Vector3 lastMovement = new Vector3();
+	private float rotatespeed = 3.0f;
 
 	void Start(){
 		print("position");
@@ -36,6 +37,10 @@ public class sergbeskrFPS : MonoBehaviour {
 	void Update(){
 		Movement();
 //		RotateYouOnMyDick(rotate1Button);
+		//this.transform.Rotate(Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * rotatespeed);
+		float xxx = rotatespeed * Input.GetAxis("Mouse X");
+		float yyy = rotatespeed * Input.GetAxis("Mouse Y");
+		transform.Rotate (yyy, xxx, 0);
 
 		if(Input.GetAxis("Mouse X")<0){
 			print("left");
