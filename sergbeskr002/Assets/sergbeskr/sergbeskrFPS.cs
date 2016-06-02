@@ -40,7 +40,8 @@ public class sergbeskrFPS : MonoBehaviour {
 		//this.transform.Rotate(Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * rotatespeed);
 		float xxx = rotatespeed * Input.GetAxis("Mouse X");
 		float yyy = rotatespeed * Input.GetAxis("Mouse Y");
-		transform.Rotate (yyy, xxx, 0);
+		Debug.Log (xxx);
+		this.transform.Rotate (yyy, xxx, this.transform.rotation.z-360);
 
 		if(Input.GetAxis("Mouse X")<0){
 			print("left");
@@ -53,6 +54,11 @@ public class sergbeskrFPS : MonoBehaviour {
 		}
 		if(Input.GetAxis("Mouse Y")>0){
 			print("up");
+		}
+
+		if (Input.GetKey(KeyCode.R)){
+			Debug.Log ("RRR");
+			this.transform.Rotate (360-this.transform.rotation.y, 360-this.transform.rotation.x, 360-this.transform.rotation.z);
 		}
 	}
 
