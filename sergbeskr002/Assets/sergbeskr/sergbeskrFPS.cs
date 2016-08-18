@@ -41,19 +41,23 @@ public class sergbeskrFPS : MonoBehaviour {
 		float xxx = rotatespeed * Input.GetAxis("Mouse X");
 		float yyy = rotatespeed * Input.GetAxis("Mouse Y");
 		Debug.Log (xxx);
-		this.transform.Rotate (yyy, xxx, this.transform.rotation.z-360);
+		//this.transform.Rotate (-yyy, xxx, this.transform.rotation.z-360);
 
 		if(Input.GetAxis("Mouse X")<0){
 			print("left");
+			RotateBody(xxx, yyy);
 		}
 		if(Input.GetAxis("Mouse X")>0){
 			print("right");
+			RotateBody(xxx, yyy);
 		}
 		if(Input.GetAxis("Mouse Y")<0){
 			print("down");
+			RotateBody(xxx, yyy);
 		}
 		if(Input.GetAxis("Mouse Y")>0){
 			print("up");
+			RotateBody(xxx, yyy);
 		}
 
 		if (Input.GetKey(KeyCode.R)){
@@ -61,7 +65,13 @@ public class sergbeskrFPS : MonoBehaviour {
 			this.transform.Rotate (360-this.transform.rotation.y, 360-this.transform.rotation.x, 360-this.transform.rotation.z);
 		}
 	}
-
+	
+	void RotateBody(float xxx, float yyy){
+		//this.transform.Rotate (-yyy, xxx, this.transform.rotation.z-360);
+		//this.transform.Rotate (-yyy, xxx, 0.0f);
+		this.transform.Rotate (0.0f, xxx, 0.0f);
+	}
+	
 	/*void RotateYouOnMyDick(List<KeyCode> keyList){
 		foreach (KeyCode element in keyList){
 			if(Input.GetKey (element)){
